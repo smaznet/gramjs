@@ -63,7 +63,7 @@ export class MemorySession extends Session {
         this._takeoutId = value
     }
 
-    getAuthKey(dcId?: number) {
+    getAuthKey(dcId?: number): undefined|AuthKey {
         if (dcId && dcId !== this.dcId) {
             // Not supported.
             return undefined
@@ -72,10 +72,10 @@ export class MemorySession extends Session {
         return this.authKey
     }
 
-    setAuthKey(authKey?: AuthKey, dcId?: number) {
+    setAuthKey(authKey?: AuthKey, dcId?: number): void {
         if (dcId && dcId !== this.dcId) {
             // Not supported.
-            return undefined
+            return
         }
 
         this.authKey = authKey
